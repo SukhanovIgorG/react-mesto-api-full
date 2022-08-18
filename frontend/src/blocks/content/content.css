@@ -1,0 +1,8 @@
+.content {
+  max-width: calc(282px*3 + 17px*3);
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 19px;
+}

@@ -1,0 +1,12 @@
+.popup__container_type_dialog {
+  width: 430px;
+  background-color: white;
+  border: 1px solid #000;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 700px) {
+  .popup__container_type_dialog {
+    width: 282px;
+  }
+}

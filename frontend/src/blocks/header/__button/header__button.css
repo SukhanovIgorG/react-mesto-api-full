@@ -1,0 +1,32 @@
+.header__button {
+    visibility: visible;
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin: 28px 30px 32px 0;
+
+    background-image: url(../../../image/icon/Line.svg);
+
+    padding: 0;
+    align-self: flex-end;
+    border: 0;
+    background-color: rgba(0, 0, 0, 0);
+    background-size: 50px;
+    background-repeat: round;
+    background-position: center;
+  
+};
+
+.header__button:hover {
+    opacity: 60%;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 441px) {
+    .header__button {
+      visibility: hidden;
+      display: none;
+    }
+  }
+
+

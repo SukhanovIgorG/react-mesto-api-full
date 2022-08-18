@@ -1,0 +1,28 @@
+.profile__avatar-contein {
+  max-width: 120px;
+  min-height: 120px;
+  max-height: 120px;
+  min-width: 120px;
+  background-image: url('#');
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  margin-right: 18.5px;
+
+  display: flex;
+  justify-content: center;
+  align-content: center;
+
+  position: relative;
+}
+
+.profile__avatar-contein:hover .profile__avatar-edit{
+  opacity: .8;
+}
+
+@media screen and (max-width: 700px) {
+
+  .profile__avatar-contein {
+    margin: 38px 0 22px 0;
+  }
+}

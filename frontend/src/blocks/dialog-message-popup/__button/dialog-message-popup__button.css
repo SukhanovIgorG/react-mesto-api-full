@@ -1,0 +1,11 @@
+.dialog-message-popup__button {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+}
+
+.dialog-message-popup__button:hover {
+  opacity: 60%;
+  cursor: pointer;
+}
+

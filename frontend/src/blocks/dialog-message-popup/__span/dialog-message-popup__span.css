@@ -1,0 +1,25 @@
+
+.dialog-message-popup__span {
+  padding: 0 36px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+
+  color: #000000;
+}
+
+
+@media screen and (max-width: 440px){
+  .dialog-message-popup__span {
+    max-width: 244px;
+    padding: 0 18px;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 24px;
+  }
+}

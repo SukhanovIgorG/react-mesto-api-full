@@ -1,0 +1,10 @@
+.dialog__container {
+  max-width: 358px;
+}
+
+@media screen and (max-width: 440px){
+  .dialog__container {
+    padding: 0 30px 0 30px;
+  }
+}
+

@@ -1,0 +1,7 @@
+
+.header__button_type_closed {
+  background-image: url(../../../../image/icon/Close_Icon.svg);
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}

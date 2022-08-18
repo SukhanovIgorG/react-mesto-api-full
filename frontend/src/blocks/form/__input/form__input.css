@@ -1,0 +1,24 @@
+.form__input {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 40px;
+  width: 358px;
+  height: 47px;
+  border: none;
+  border-bottom: 1px rgba(0, 0, 0, 0.2) solid;
+}
+
+.form__input:active, :hover, :focus {
+  outline: 0;
+  outline-offset: 0;
+}
+
+@media screen and (max-width: 700px) {
+  .form__input {
+    width: 238px;
+    height: 47px;
+  }
+}

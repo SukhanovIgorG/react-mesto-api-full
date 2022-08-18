@@ -1,0 +1,12 @@
+const mongoose = require('mongoose');
+
+const app = require('./app');
+const { PORT = 3001 } = process.env;
+
+async function main() {
+  await mongoose.connect('mongodb://localhost:27017/mestodb');
+  await app.listen(PORT);
+  console.log(`App listening on port ${PORT}`);
+}
+
+main();

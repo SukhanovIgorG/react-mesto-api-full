@@ -1,0 +1,5 @@
+.popup_visible {
+  -webkit-animation: fadein 1s forwards;
+  animation: fadein 1s forwards;
+  display: flex;
+}

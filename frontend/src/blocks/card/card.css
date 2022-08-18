@@ -1,0 +1,18 @@
+.card {
+  max-width: 282px;
+  min-width: 282px;
+  background-color: white;
+  width: min-content;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card__like-box { 
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+
+  padding-right: 10px;
+
+  align-self: center;
+}

@@ -1,0 +1,28 @@
+.menu {
+  position: relative;
+  width: 300px;
+  justify-content: right;
+
+  visibility: hidden;
+  display: none;
+
+
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu_visible {
+  visibility: visible;
+  display: flex;
+}
+
+@media screen and (min-width: 440px) {
+  .menu {
+    margin-right: 19px;
+    visibility: visible;
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+
