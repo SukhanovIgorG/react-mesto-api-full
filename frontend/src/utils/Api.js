@@ -80,9 +80,9 @@ class Api {
 }
 
 const api = new Api({
-  // baseUrl: "https://sukhanovgarik.back.nomoredomains.sbs",
+  baseUrl: "https://sukhanovgarik.back.nomoredomains.sbs",
   // baseUrl: "https://mesto.nomoreparties.co/v1/cohort-41",
-  baseUrl: "http://localhost:3001",
+  // baseUrl: "http://localhost:3001",
   headers: {
     // authorization: "93691316-b2f3-4bce-8add-d8eb39969e4b", // было так
     authorization: `Bearer ${localStorage.getItem("JWT")}`,
