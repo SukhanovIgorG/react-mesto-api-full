@@ -1,10 +1,11 @@
 /* eslint-disable consistent-return */
+require('dotenv').config();
 const jwt = require('jsonwebtoken');
 const AuthError = require('../errors/auth-error');
 
-const extractBearerToken = (header) => {
-  return header.replace('Bearer ', '');
-}; // для варианта с токеном в ответе/запросе
+const { JWT_SECRET, NODE_ENV } = process.env;
+
+const extractBearerToken = (header) => header.replace('Bearer ', ''); // для варианта с токеном в ответе/запросе
 
 module.exports = (req, res, next) => {
   // const token = req.cookies.jwt;
@@ -16,26 +17,13 @@ module.exports = (req, res, next) => {
   let payload;
 
   try {
-    payload = jwt.verify(token, 'super-strong-secret-key');
+    payload = jwt.verify(
+      token,
+      NODE_ENV === 'production' ? JWT_SECRET : 'super-strong-secret-key',
+    );
   } catch (err) {
     next(new AuthError('нужна авторизация'));
   }
   req.user = payload; // записываем пейлоуд в объект запроса
   next(); // пропускаем запрос дальше
 };
-
-// const jwt = require('jsonwebtoken');
-// const AuthError = require('../errors/auth-error');
-
-// module.exports = (req, res, next) => {
-//   const token = req.cookies.jwt;
-//   let payload;
-
-//   try {
-//     payload = jwt.verify(token, 'super-strong-secret-key');
-//   } catch (err) {
-//     next(new AuthError('нужна авторизация'));
-//   }
-//   req.user = payload; // записываем пейлоуд в объект запроса
-//   next(); // пропускаем запрос дальше
-// };

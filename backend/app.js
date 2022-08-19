@@ -17,8 +17,6 @@ const { login, createUser } = require('./src/controller/userControllers');
 const { patternUrl } = require('./utils/constants');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-// const { PORT = 3000 } = process.env;
-
 const app = express();
 
 app.use(cors());
@@ -30,6 +28,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use(requestLogger); // логгер запросов
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.post('/signin', celebrate({
   // валидируем параметры
@@ -62,11 +66,5 @@ app.use(errorLogger); // подключаем логгер запросов
 app.use(errors()); // обработчик ошибок celebrate
 
 app.use(errorController);
-
-// async function main() {
-//   await mongoose.connect('mongodb://localhost:27017/mestodb');
-//   await app.listen(PORT);
-// }
-// main();
 
 module.exports = app;

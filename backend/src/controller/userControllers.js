@@ -1,5 +1,6 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-unused-expressions */
+require('dotenv').config();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const NotFoundError = require('../../errors/not-found-error');
@@ -8,6 +9,8 @@ const MongoError = require('../../errors/mongo-error');
 const AuthError = require('../../errors/auth-error');
 
 const { User } = require('../../models/usersModels');
+
+const { JWT_SECRET, NODE_ENV } = process.env;
 
 exports.login = (req, res, next) => {
   const { email, password } = req.body;
@@ -29,16 +32,15 @@ exports.login = (req, res, next) => {
           return user;
         })
         .then((userAuth) => {
-          const token = jwt.sign({ _id: userAuth._id }, 'super-strong-secret-key', { expiresIn: '1d' });
+          const token = jwt.sign(
+            { _id: userAuth._id },
+            NODE_ENV === 'production' ? JWT_SECRET : 'super-strong-secret-key',
+            { expiresIn: '1d' },
+          );
           res
-            // .cookie('jwt', token, {
-            //   maxAge: 3600000 * 24 * 7,
-            //   httpOnly: true, // выключили доступ из ЖС
-            //   sameSite: true, // только этот домена
-            // })
-            .send({ 
+            .send({
               token,
-              // message: 'авторизация прошла очень успешно' 
+              // message: 'авторизация прошла очень успешно'
             });
         });
     })
