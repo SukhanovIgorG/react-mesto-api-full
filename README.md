@@ -12,7 +12,7 @@
 
 # Бэкенд
 * директория - `backend/`
-* Домен - [https://sukhanovgarik.back.nomoredomains.sbs](sukhanovgarik.back.nomoredomains.sbs)
+* Домен - [sukhanovgarik.back.nomoredomains.sbs](https://sukhanovgarik.back.nomoredomains.sbs)
 * СТЕК:
   - node.js
   - express.js
@@ -26,7 +26,7 @@
 
 # Фронтенд
 * директория - `frontend/`
-* Домен - [https://sukhanovgarik.front.nomoredomains.sbs](sukhanovgarik.front.nomoredomains.sbs)
+* Домен - [sukhanovgarik.front.nomoredomains.sbs](https://sukhanovgarik.front.nomoredomains.sbs)
 * СТЕК:
   - JavaScript
   - HTML
