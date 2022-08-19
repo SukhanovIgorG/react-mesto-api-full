@@ -4,7 +4,7 @@
 
 # Сервер
 * публичный IP - 130.193.41.130
-* СТЕК
+* СТЕК:
   nginx
   pm2
   ssl
@@ -13,25 +13,25 @@
 # Бэкенд
 * директория - `backend/`
 * Домен - sukhanovgarik.back.nomoredomains.sbs
-* СТЕК
-  node.js
-  express.js
-  mongo.db
-  Безопасность
-    helmet
-    limitter
-    cors
-    hashing data
+* СТЕК:
+  - node.js
+  - express.js
+  - mongo.db
+  - Безопасность
+    1. helmet
+    2. limitter
+    3. cors
+    4. hashing data
     
 
 # Фронтенд
 * директория - `frontend/`
 * Домен - sukhanovgarik.front.nomoredomains.sbs
-* СТЕК
-  JavaScript
-  HTML
-  CSS
-    Grid
-    Flex
-  React.js
+* СТЕК:
+  - JavaScript
+  - HTML
+  - CSS
+    1. Grid
+    2. Flex
+  - React.js
 
