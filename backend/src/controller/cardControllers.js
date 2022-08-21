@@ -8,7 +8,7 @@ const RulesError = require('../../errors/rules-error');
 
 exports.getCards = async (req, res, next) => {
   await Card.find({})
-    .then((card) => res.send({ card }))
+    .then((card) => res.reverse.send({ card }))
     .catch(next);
 };
 

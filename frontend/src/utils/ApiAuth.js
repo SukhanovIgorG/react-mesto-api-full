@@ -29,7 +29,6 @@ export const register = ({ email, password }) => {
 };
 
 export const login = ({ email, password }) => {
-  console.log('логин');
   return fetch(`${BASE_URL}/signin`, {
     method: "POST",
     headers: {
@@ -42,7 +41,6 @@ export const login = ({ email, password }) => {
   })
     .then((res) => checkResponse(res))
     .then((res) => {
-      console.log(res.token);
       localStorage.setItem("JWT", res.token);
       return res;
     });
@@ -51,6 +49,20 @@ export const login = ({ email, password }) => {
 // проверка мейла
 export const me = () => {
   return fetch(`${BASE_URL}/users/me`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("JWT")}`,
+    },
+  })
+    .then((res) => checkResponse(res))
+    .then((res) => {
+      return res;
+    });
+};
+
+export const card = () => {
+  return fetch(`${BASE_URL}/cards`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

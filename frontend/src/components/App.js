@@ -47,14 +47,16 @@ function App() {
   function chengeHeaderButton(text) {
     setHeaderButton(text)
   };
-
   React.useEffect(() => {
     if (jwtInStorage) {
       Auth.me().then((data) => {
         setLoggedIn(true);
-        // setEmail(data.user.email); // было так
         setEmail(data.user.email);
-        chengeHeaderButton('выйти')
+        setCurrentUser(data.user);
+        chengeHeaderButton('выйти');
+      Auth.card().then((data) => {
+        setCards(data.card);
+      });
       })
       .then(()=>{navigate("/main");})
       .catch((err) => {
@@ -67,6 +69,7 @@ function App() {
   // functions
 
   React.useEffect(() => {
+    if (loggedIn === true) {
     api
       .loadUserInfo()
       .then((userData) => {
@@ -75,18 +78,21 @@ function App() {
       .catch((err) => {
         console.log(`ошибка загрузки данных о пользователе ${err}`);
       });
-      api
+    api
       .getInitialCards()
       .then((data) => {
         setCards(data.card);
+        console.log('Загрузили карточки в стейт ' + cards);
       })
       .catch((err) => {
         console.log(`ошибка загрузки стартовых карточек ${err}`);
       });
+    } else {
+      console.log('jwt not in strorage')
+    }
   }, []);
 
   function handleCardLike(card) {
-    // const isLiked = card.likes.some((i) => i._id === currentUser._id);
     const isLiked = Array.isArray(card.likes) ? card.likes.includes(currentUser._id) : false;
     !isLiked
       ? api.addLike(card).then((newCard) => {
@@ -201,7 +207,6 @@ function App() {
           <Route path="/signup" element={<Register onTuulTipVisible={setIsToolTipVisible} onToolTipStatus={setIsToolTipStatus}/>} />
           <Route path="/signin" element={<Login onLogin={handleLogin} />} />
           <Route path="/*"  element={loggedIn ? <Navigate replace to="/signin" /> : <Navigate replace to="/main" /> } />
-          {/* <ProtectedRoute nav="/main" loggedIn={loggedIn} component={Main} /> */}
           <Route exact path='/main' element={<ProtectedRoute loggedIn={loggedIn}/>}>
             <Route exact path='/main' element={
                 <Main

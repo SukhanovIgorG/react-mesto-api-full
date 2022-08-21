@@ -21,13 +21,12 @@ const app = express();
 
 app.use(cors());
 app.use(helmet());
+app.use(requestLogger); // логгер запросов
 app.use(limiter);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-
-app.use(requestLogger); // логгер запросов
 
 app.get('/crash-test', () => {
   setTimeout(() => {
