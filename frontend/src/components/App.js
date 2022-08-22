@@ -183,7 +183,6 @@ function App() {
   }
 
   function handlerSubmitNewPlace({ title, link }) {
-    console.log(title, link)
     api.postNewCard(title, link).then((newCard) => {
       setCards([newCard.card, ...cards]);
     }).then(()=> {closeAllPopups()}).catch((err) => {
@@ -204,8 +203,8 @@ function App() {
         <Header onLogin={handleLogin} loggedIn={loggedIn} menu={isHeaderMenu} button={headerButton} onChengeButton={chengeHeaderButton} onOpenMenu={hendlerMenu} onSetEmail={hendleSetEmail} email={email}/>
         < InfoTooltip message={isToolTipVisible} status={isToolTipStatus} onClose={closeAllPopups}/>
         <Routes>
-          <Route path="/signup" element={<Register onTuulTipVisible={setIsToolTipVisible} onToolTipStatus={setIsToolTipStatus}/>} />
-          <Route path="/signin" element={<Login onLogin={handleLogin} />} />
+          <Route path="/signup" element={<Register onToolTipVisible={setIsToolTipVisible} onToolTipStatus={setIsToolTipStatus}/>} />
+          <Route path="/signin" element={<Login onLogin={handleLogin} onToolTipVisible={setIsToolTipVisible} onToolTipStatus={setIsToolTipStatus}/>} />
           <Route path="/*"  element={loggedIn ? <Navigate replace to="/signin" /> : <Navigate replace to="/main" /> } />
           <Route exact path='/main' element={<ProtectedRoute loggedIn={loggedIn}/>}>
             <Route exact path='/main' element={

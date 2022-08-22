@@ -2,7 +2,7 @@ import { useState } from "react";
 import * as Auth from "../utils/ApiAuth";
 import { useNavigate } from "react-router-dom";
 
-function Login({ onLogin }) {
+function Login({ onLogin, onToolTipVisible, onToolTipStatus }) {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -27,7 +27,11 @@ function Login({ onLogin }) {
       setEmail("");
       setPassword("");
       navigate("/main");
-    }).catch((err)=>console.log('ошибка входа ' + err));
+    }).catch((err)=>{
+      onToolTipVisible(true);
+      onToolTipStatus(false);
+      console.log('ошибка входа ' + err)
+    });
   }
 
   return (

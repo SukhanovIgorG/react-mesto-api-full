@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as Auth from "../utils/ApiAuth";
 
-function Register( { onTuulTipVisible, onToolTipStatus } ) {
+function Register( { onToolTipVisible, onToolTipStatus } ) {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -25,11 +25,11 @@ function Register( { onTuulTipVisible, onToolTipStatus } ) {
       navigate("signin");
     })
     .then(()=>{
-      onTuulTipVisible(true);
+      onToolTipVisible(true);
       onToolTipStatus(true);
     })
     .catch(()=> {
-      onTuulTipVisible(true);
+      onToolTipVisible(true);
       onToolTipStatus(false);
     });
   }
