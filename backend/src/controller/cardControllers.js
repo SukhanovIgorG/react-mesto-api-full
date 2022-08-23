@@ -7,7 +7,7 @@ const CastError = require('../../errors/cast-error');
 const RulesError = require('../../errors/rules-error');
 
 exports.getCards = async (req, res, next) => {
-  await Card.find({})
+  await Card.find({}).sort({ createdAt: -1 })
     .then((card) => res.send({ card }))
     .catch(next);
 };

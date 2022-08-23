@@ -23,6 +23,7 @@ function Login({ onLogin, onToolTipVisible, onToolTipStatus }) {
   function handleSubmit(e) {
     e.preventDefault();
     Auth.login({ email, password }).then((data) => {
+      localStorage.setItem("JWT", data.token);
       handleLogin(true);
       setEmail("");
       setPassword("");

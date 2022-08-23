@@ -17,6 +17,7 @@ const Card = ({ card, onClick, onCardLike, onCardDelete }) => {
   }
 
   const isOwn = card.owner === currentUser._id;
+  
   const isLiked = Array.isArray(card.likes) ? card.likes.includes(currentUser._id) : false;
   // const isLiked = card.likes.some((i) => i._id === currentUser._id);
 

@@ -1,6 +1,4 @@
-// export const BASE_URL = "https://auth.nomoreparties.co";
 export const BASE_URL = "https://sukhanovgarik.back.nomoredomains.sbs";
-// export const BASE_URL = "http://localhost:3001";
 
 const checkResponse = (res) => {
   if (res.ok) {
@@ -46,13 +44,13 @@ export const login = ({ email, password }) => {
     });
 };
 
-// проверка мейла
-export const me = () => {
+// проверка токена
+export const autorization = (token) => {
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${localStorage.getItem("JWT")}`,
+      Authorization: `Bearer ${token}`,
     },
   })
     .then((res) => checkResponse(res))
@@ -61,16 +59,4 @@ export const me = () => {
     });
 };
 
-export const card = () => {
-  return fetch(`${BASE_URL}/cards`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${localStorage.getItem("JWT")}`,
-    },
-  })
-    .then((res) => checkResponse(res))
-    .then((res) => {
-      return res;
-    });
-};
+// export const BASE_URL = "https://auth.nomoreparties.co";

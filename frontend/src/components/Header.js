@@ -1,9 +1,7 @@
 import headerLogo from "../image/logo.svg";
-// import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-// import * as Auth from "../utils/ApiAuth";
 
-function Header({ menu, button, onOpenMenu, onChengeButton, onLogin, loggedIn, onSetEmail, email }) {
+function Header({ menu, button, onOpenMenu, onChengeButton, onLogin, loggedIn, onSetEmail, email, onSignOut }) {
   
   const navigate = useNavigate();
 
@@ -16,6 +14,7 @@ function Header({ menu, button, onOpenMenu, onChengeButton, onLogin, loggedIn, o
     onSetEmail("");
     onChengeButton('регистрация');
     navigate("/");
+    onSignOut();
   }
 
   function handlerRegistration() {
@@ -51,7 +50,6 @@ function Header({ menu, button, onOpenMenu, onChengeButton, onLogin, loggedIn, o
             }`}
             onClick={hendlerMenu}
           ></button>
-          {/* <button className='menu__close-button'></button> */}
         </div>
         <div className={`menu ${statusMenu && "menu_visible"}`}>
           <span className="menu__user-mail">{loggedIn && email}</span>

@@ -42,55 +42,46 @@ function App() {
 
   const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || selectedCard.link
   const navigate = useNavigate();
-  const jwtInStorage = localStorage.getItem("JWT");
+  const jwt = localStorage.getItem("JWT");
 
   function chengeHeaderButton(text) {
     setHeaderButton(text)
   };
-  React.useEffect(() => {
-    if (jwtInStorage) {
-      Auth.me().then((data) => {
-        setLoggedIn(true);
-        setEmail(data.user.email);
+
+  React.useEffect(()=>{
+    if (jwt) {
+      Auth.autorization(jwt);
+      setLoggedIn(true);
+      setEmail(currentUser.email);
+      chengeHeaderButton('выйти'); 
+    } else {
+      console.log('jwt не найден, текущийПользователь');
+      setCurrentUser({});
+      setLoggedIn(false);
+      navigate("/signin");
+    }
+  }, [])
+
+  React.useEffect(()=>{
+    if (loggedIn) {
+      Promise.all([api.loadUserInfo(), api.getInitialCards()])
+      .then(([data, cards])=> {
+        console.log(data.user.email);
         setCurrentUser(data.user);
+        setEmail(data.user.email);
         chengeHeaderButton('выйти');
-      Auth.card().then((data) => {
-        setCards(data.card);
-      });
+        setCards(cards.card);
+        console.log('авторизация выполнена');
       })
-      .then(()=>{navigate("/main");})
+      .then(()=>{
+        navigate("/main");
+      })
       .catch((err) => {
         console.log(`ошибка. нет JWT. Сообщение: ${err}`)});
     } else {
-      navigate("/signin");
-    }
-  }, [jwtInStorage]);
-
-  // functions
-
-  React.useEffect(() => {
-    if (loggedIn === true) {
-    api
-      .loadUserInfo()
-      .then((userData) => {
-        setCurrentUser(userData.user);
-      })
-      .catch((err) => {
-        console.log(`ошибка загрузки данных о пользователе ${err}`);
-      });
-    api
-      .getInitialCards()
-      .then((data) => {
-        setCards(data.card);
-        console.log('Загрузили карточки в стейт ' + cards);
-      })
-      .catch((err) => {
-        console.log(`ошибка загрузки стартовых карточек ${err}`);
-      });
-    } else {
-      console.log('jwt not in strorage')
-    }
-  }, []);
+      console.log('авторизация не выполнена');
+    } 
+  }, [loggedIn])
 
   function handleCardLike(card) {
     const isLiked = Array.isArray(card.likes) ? card.likes.includes(currentUser._id) : false;
@@ -193,14 +184,21 @@ function App() {
   function handleLogin (status) {
     setLoggedIn(status);
   }
+
   function hendleSetEmail (email) {
     setEmail(email)
+  }
+
+  function handleSignOut () {
+    setCurrentUser({
+      _id: '',
+    });
   }
 
   return (
     <div className="App root">
       <CurrentUserContext.Provider value={currentUser}>
-        <Header onLogin={handleLogin} loggedIn={loggedIn} menu={isHeaderMenu} button={headerButton} onChengeButton={chengeHeaderButton} onOpenMenu={hendlerMenu} onSetEmail={hendleSetEmail} email={email}/>
+        <Header onLogin={handleLogin} loggedIn={loggedIn} menu={isHeaderMenu} button={headerButton} onChengeButton={chengeHeaderButton} onOpenMenu={hendlerMenu} onSetEmail={hendleSetEmail} email={email} onSignOut={handleSignOut}/>
         < InfoTooltip message={isToolTipVisible} status={isToolTipStatus} onClose={closeAllPopups}/>
         <Routes>
           <Route path="/signup" element={<Register onToolTipVisible={setIsToolTipVisible} onToolTipStatus={setIsToolTipStatus}/>} />
