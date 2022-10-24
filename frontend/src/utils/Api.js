@@ -85,7 +85,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "https://sukhanovgarik.back.nomoredomains.sbs",
+  baseUrl: "https://api-mesto.site",
   headers: {
     "Content-Type": "application/json",
   },

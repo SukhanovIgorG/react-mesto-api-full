@@ -3,7 +3,7 @@
 Репозиторий для приложения проекта `Mesto`, включающий фронтенд и бэкенд части приложения со следующими возможностями: авторизации и регистрации пользователей, операции с карточками и пользователями.
 
 # Сервер
-* публичный IP - [130.193.41.130](http://130.193.41.130)
+* публичный IP - [51.250.4.189](http://51.250.4.189)
 * СТЕК:
   - nginx
   - pm2
@@ -12,7 +12,7 @@
 
 # Бэкенд
 * директория - `backend/`
-* Домен - [sukhanovgarik.back.nomoredomains.sbs](https://sukhanovgarik.back.nomoredomains.sbs)
+* Домен - [api-mesto.site/](https://api-mesto.site/)
 * СТЕК:
   - node.js
   - express.js
@@ -26,7 +26,7 @@
 
 # Фронтенд
 * директория - `frontend/`
-* Домен - [sukhanovgarik.front.nomoredomains.sbs](https://sukhanovgarik.front.nomoredomains.sbs)
+* Домен - [mesto.site/](https://mesto.site/)
 * СТЕК:
   - JavaScript
   - HTML

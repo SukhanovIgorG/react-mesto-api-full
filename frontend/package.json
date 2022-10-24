@@ -17,7 +17,7 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy-ghp": "gh-pages -d build",
-    "deploy-server": "npm run build && scp -r ./build/* sukhanovgarik@130.193.41.130:/home/praktikum/mesto-frontend",
+    "deploy-mesto-front": "npm run build && scp -r ./build/* sukhanovgarik@51.250.4.189:/home/sukhanovgarik/mesto-frontend",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

@@ -1,4 +1,4 @@
-export const BASE_URL = "https://sukhanovgarik.back.nomoredomains.sbs";
+export const BASE_URL = "http://api-mesto.site";
 
 const checkResponse = (res) => {
   if (res.ok) {
